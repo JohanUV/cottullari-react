@@ -514,6 +514,16 @@ section { position: relative; }
     background: linear-gradient(90deg, var(--verde-deep), var(--verde), var(--green), var(--green-bright));
     z-index: 2;
 }
+/* Pista "desliza" para la tabla — solo visible en móvil/tablet (ver media query) */
+.fleet-scroll-hint {
+    display: none;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-3);
+    margin: 0 0 16px;
+    letter-spacing: 0.02em;
+}
 .fleet-table { width: 100%; border-collapse: collapse; color: var(--text-1); }
 .fleet-table thead {
     background:
@@ -1209,9 +1219,10 @@ body.nav-open { overflow: hidden; }
     .amenities-grid { grid-template-columns: repeat(2, 1fr); }
     .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; padding-bottom: 40px; }
 
-    /* Tabla flota con scroll horizontal */
-    .fleet-detail-table { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    .fleet-detail-table table { min-width: 720px; }
+    /* Tabla flota con scroll horizontal (evita que se corten columnas en móvil) */
+    .fleet-table-wrapper { overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; }
+    .fleet-table { min-width: 720px; }
+    .fleet-scroll-hint { display: block; }
 
     /* Hero ajustes */
     .hero { min-height: 88vh; }

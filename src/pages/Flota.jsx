@@ -21,6 +21,7 @@ export default function Flota() {
             </p>
           </header>
 
+          <p className="fleet-scroll-hint">← Desliza para ver toda la tabla →</p>
           <div className="fleet-table-wrapper reveal-scale">
             <table className="fleet-table">
               <thead>

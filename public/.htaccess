@@ -1,0 +1,14 @@
+# Fallback SPA para Apache/XAMPP.
+# Hace que cualquier ruta (ej. /destinos/sierra) sirva index.html,
+# para que React Router resuelva la navegación en el cliente al recargar
+# o entrar directo por URL. Sin esto, recargar una ruta daría 404.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  # No reescribir archivos o carpetas que sí existen (img, video, assets, etc.)
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+  # Todo lo demás cae en index.html
+  RewriteRule ^ index.html [L]
+</IfModule>

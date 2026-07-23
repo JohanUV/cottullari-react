@@ -27,6 +27,24 @@ export const flota = [
     badgeClass: 'badge-vip',
   },
   {
+    tipo: 'Microbús VIP',
+    detalle: '',
+    capacidad: '35 PAX',
+    ideal: 'Grupos grandes, delegaciones, giras',
+    servicios: 'A/C · WiFi · TV · Sonido · Cargadores',
+    badge: 'VIP',
+    badgeClass: 'badge-vip',
+  },
+  {
+    tipo: 'Microbús VIP',
+    detalle: '',
+    capacidad: '36 PAX',
+    ideal: 'Grupos grandes, eventos corporativos',
+    servicios: 'A/C · WiFi · TV · Sonido · Cargadores',
+    badge: 'VIP',
+    badgeClass: 'badge-vip',
+  },
+  {
     tipo: 'Buseta VIP',
     detalle: '',
     capacidad: '16 PAX',
@@ -47,14 +65,14 @@ export const flota = [
 ]
 
 export const comodidades = [
-  { icono: '❄️', texto: 'Aire acondicionado' },
-  { icono: '🎵', texto: 'Sonido premium' },
-  { icono: '🔌', texto: 'Cargadores USB / 110V / Tipo C' },
-  { icono: '📶', texto: 'WiFi a bordo' },
-  { icono: '🛏️', texto: 'Asientos tipo coche cama' },
-  { icono: '📺', texto: 'Pantalla TV' },
-  { icono: '🔥', texto: 'Calefacción' },
-  { icono: '🧊', texto: 'Nevera a bordo' },
+  { icono: 'snowflake', texto: 'Aire acondicionado' },
+  { icono: 'music', texto: 'Sonido premium' },
+  { icono: 'plug', texto: 'Cargadores USB / 110V / Tipo C' },
+  { icono: 'wifi', texto: 'WiFi a bordo' },
+  { icono: 'bed', texto: 'Asientos tipo coche cama' },
+  { icono: 'tv', texto: 'Pantalla TV' },
+  { icono: 'flame', texto: 'Calefacción' },
+  { icono: 'fridge', texto: 'Nevera a bordo' },
 ]
 
 export const carrusel = [

@@ -58,17 +58,17 @@ export default function CotizarForm({ destinoInicial = '' }) {
 
       <div className="form-row">
         <label htmlFor="nombre">Nombre completo *</label>
-        <input type="text" id="nombre" name="nombre" required maxLength="80" placeholder="Ej. Juan Pérez" />
+        <input type="text" id="nombre" name="nombre" required maxLength="80" autoComplete="name" placeholder="Ej. Juan Pérez" />
       </div>
 
       <div className="form-row form-row-double">
         <div>
           <label htmlFor="correo">Correo electrónico *</label>
-          <input type="email" id="correo" name="correo" required placeholder="usuario@correo.com" />
+          <input type="email" id="correo" name="correo" required autoComplete="email" spellCheck="false" placeholder="usuario@correo.com" />
         </div>
         <div>
           <label htmlFor="telefono">Teléfono / WhatsApp</label>
-          <input type="tel" id="telefono" name="telefono" maxLength="15" placeholder="0999 999 999" />
+          <input type="tel" id="telefono" name="telefono" maxLength="15" autoComplete="tel" inputMode="tel" placeholder="0999 999 999" />
         </div>
       </div>
 
@@ -76,7 +76,7 @@ export default function CotizarForm({ destinoInicial = '' }) {
         <div>
           <label htmlFor="destino">Destino del viaje</label>
           <select id="destino" name="destino" defaultValue={destinoInicial}>
-            <option value="">Seleccione...</option>
+            <option value="">Seleccione…</option>
             {destinosOpciones.map((d) => (
               <option key={d}>{d}</option>
             ))}
@@ -84,7 +84,7 @@ export default function CotizarForm({ destinoInicial = '' }) {
         </div>
         <div>
           <label htmlFor="pasajeros">N° de pasajeros</label>
-          <input type="number" id="pasajeros" name="pasajeros" min="1" max="60" placeholder="Ej. 25" />
+          <input type="number" id="pasajeros" name="pasajeros" min="1" max="60" inputMode="numeric" placeholder="Ej. 25" />
         </div>
       </div>
 
@@ -103,7 +103,7 @@ export default function CotizarForm({ destinoInicial = '' }) {
       )}
 
       <button type="submit" className="btn btn-primary btn-block" disabled={enviando}>
-        {enviando ? 'Enviando...' : 'Enviar solicitud →'}
+        {enviando ? 'Enviando…' : 'Enviar solicitud →'}
       </button>
       <p className="form-note">Al enviar, aceptas que nos contactemos contigo para procesar tu cotización.</p>
     </form>

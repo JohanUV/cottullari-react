@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Stats from '../components/Stats.jsx'
+import Icon from '../components/Icon.jsx'
 import useReveal from '../hooks/useReveal.js'
 import useDocumentTitle from '../hooks/useDocumentTitle.js'
 
@@ -23,7 +24,13 @@ export default function Home() {
   return (
     <>
       <section id="inicio" className="hero">
-        <div className="hero-bg"></div>
+        <div className="hero-bg">
+          <div className="hero-collage" aria-hidden="true">
+            <div className="hero-collage-item hero-collage-item--1"></div>
+            <div className="hero-collage-item hero-collage-item--2"></div>
+            <div className="hero-collage-item hero-collage-item--3"></div>
+          </div>
+        </div>
         <div className="hero-overlay"></div>
         <div className="hero-shapes">
           <div className="blob-1"></div>
@@ -37,8 +44,10 @@ export default function Home() {
             <em>como nunca antes.</em>
           </h1>
           <p className="hero-subtitle">
-            Calidad, confort y seguridad en cada destino. Llevamos a turistas, empresas e instituciones
-            por la Costa, Sierra, Oriente, Colombia y Perú con nuestra flota de 22 unidades modernas.
+            Calidad, confort y seguridad en cada destino. Con una flota moderna de 22 unidades
+            entre camionetas, furgonetas, minibuses y buses, conectamos a turistas, empresas e
+            instituciones con los principales destinos de Ecuador, Costa, Sierra y Amazonía,
+            además de Colombia y Perú.
           </p>
           <div className="hero-actions">
             <Link to="/contacto" className="btn btn-primary">Cotiza tu viaje</Link>
@@ -65,19 +74,19 @@ export default function Home() {
           </header>
           <ul className="services-grid">
             <li className="service-card reveal" data-delay="100">
-              <div className="service-icon">🏢</div>
+              <div className="service-icon"><Icon name="building" /></div>
               <h3>Nosotros</h3>
               <p>16 años representando a Cotopaxi como pioneros del turismo terrestre.</p>
               <Link to="/nosotros" className="link-arrow">Conócenos</Link>
             </li>
             <li className="service-card reveal" data-delay="200">
-              <div className="service-icon">🚌</div>
+              <div className="service-icon"><Icon name="bus" /></div>
               <h3>Flota</h3>
               <p>22 unidades modernas: buses, microbuses y vans equipadas con confort premium.</p>
               <Link to="/flota" className="link-arrow">Ver flota</Link>
             </li>
             <li className="service-card reveal" data-delay="300">
-              <div className="service-icon">🗺️</div>
+              <div className="service-icon"><Icon name="map" /></div>
               <h3>Destinos</h3>
               <p>Cinco regiones: Sierra, Costa, Oriente, Colombia y Perú.</p>
               <Link to="/destinos" className="link-arrow">Ver destinos</Link>

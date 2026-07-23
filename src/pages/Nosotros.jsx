@@ -51,7 +51,7 @@ export default function Nosotros() {
 
       <div className="container team-section reveal-scale">
         <div className="team-photo-frame">
-          <img src="/img/socios.jpg" alt="Equipo de socios y colaboradores de Cottullari S.A. - 16 años de aniversario" loading="lazy" />
+          <img src="/img/socios.jpg" alt="Equipo de socios y colaboradores de Cottullari S.A. - 16 años de aniversario" loading="lazy" width="1440" height="810" />
           <div className="team-overlay">
             <span className="team-badge">★ 16 AÑOS DE TRAYECTORIA</span>
             <h3>Una <em>familia</em> que crece junto a usted</h3>

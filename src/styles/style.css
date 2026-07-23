@@ -307,9 +307,7 @@ body::after {
 .hero-bg {
     position: absolute;
     inset: 0;
-    background-image: url('/img/hero-atardecer.jpg');
-    background-size: cover;
-    background-position: center;
+    background: var(--azul-deep, #0f1e36);
     z-index: 1;
     transform: scale(1.05);
     animation: heroZoom 25s ease-out infinite alternate;
@@ -317,6 +315,27 @@ body::after {
     mask-image: linear-gradient(to bottom, black 0%, black 12%, rgba(0,0,0,0.92) 28%, rgba(0,0,0,0.72) 42%, rgba(0,0,0,0.48) 55%, rgba(0,0,0,0.25) 68%, rgba(0,0,0,0.10) 80%, rgba(0,0,0,0.03) 90%, transparent 100%);
 }
 @keyframes heroZoom { from { transform: scale(1); } to { transform: scale(1.12); } }
+
+/* Portada tipo collage — 3 fotos de la flota */
+.hero-collage {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: 1.15fr 1fr 1.15fr;
+    gap: 4px;
+}
+.hero-collage-item {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transform: scale(1.08);
+    animation: collageReveal 1.6s var(--ease-out, cubic-bezier(0.16,1,0.3,1)) forwards;
+}
+.hero-collage-item--1 { background-image: url('/img/portada-1.jpg'); background-position: center 58%; animation-delay: 0.05s; }
+.hero-collage-item--2 { background-image: url('/img/portada-2.jpg'); background-position: center 55%; animation-delay: 0.25s; }
+.hero-collage-item--3 { background-image: url('/img/portada-3.jpg'); background-position: center 60%; animation-delay: 0.45s; }
+@keyframes collageReveal { to { opacity: 1; transform: scale(1); } }
 .hero-overlay {
     position: absolute;
     inset: 0;
@@ -462,6 +481,7 @@ section { position: relative; }
 .service-card > * { position: relative; z-index: 1; }
 .service-icon {
     font-size: 24px; margin-bottom: 22px;
+    color: var(--verde);
     display: inline-flex; align-items: center; justify-content: center;
     width: 58px; height: 58px;
     background: linear-gradient(135deg, rgba(46,107,176,0.14), rgba(43,182,115,0.14));
@@ -470,7 +490,8 @@ section { position: relative; }
     transition: all 0.5s var(--ease-out);
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
 }
-.service-card:hover .service-icon { background: linear-gradient(135deg, var(--verde), var(--green)); border-color: transparent; transform: scale(1.08) rotate(-6deg); border-radius: 50% 20% 50% 20%; box-shadow: 0 12px 24px rgba(46,107,176,0.30); }
+.service-card:hover .service-icon { background: linear-gradient(135deg, var(--verde), var(--green)); border-color: transparent; transform: scale(1.08) rotate(-6deg); border-radius: 50% 20% 50% 20%; box-shadow: 0 12px 24px rgba(46,107,176,0.30); color: #fff; }
+.service-icon svg { width: 27px; height: 27px; }
 .service-card h3 { font-family: var(--display); font-size: 30px; color: var(--text-1); margin-bottom: 12px; letter-spacing: 1px; font-weight: 400; }
 .service-card p { font-family: var(--body); font-size: 14.5px; color: var(--text-2); line-height: 1.75; font-weight: 500; }
 .service-card .service-icon { background: linear-gradient(135deg, rgba(255,255,255,0.7), rgba(255,255,255,0.45)); border-color: rgba(255,255,255,0.65); }
@@ -636,7 +657,9 @@ section { position: relative; }
     box-shadow: var(--shadow-sm);
 }
 .amenities-grid li:hover { border-color: var(--green); transform: translateY(-4px); box-shadow: 0 14px 28px rgba(43,182,115,0.18); color: var(--text-1); }
-.amenities-grid li span { font-size: 18px; width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(46,107,176,0.14), rgba(43,182,115,0.14)); border-radius: 50%; flex-shrink: 0; border: 1px solid rgba(46,107,176,0.18); }
+.amenities-grid li span { font-size: 18px; width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(46,107,176,0.14), rgba(43,182,115,0.14)); border-radius: 50%; flex-shrink: 0; border: 1px solid rgba(46,107,176,0.18); color: var(--verde); }
+.amenities-grid li span svg { width: 20px; height: 20px; }
+.amenities-grid li:hover span { color: var(--green); }
 
 /* ============ SECCIÓN CARRUSEL DE UNIDADES ============ */
 .section-carrusel {
@@ -1226,6 +1249,9 @@ body.nav-open { overflow: hidden; }
 
     /* Hero ajustes */
     .hero { min-height: 88vh; }
+    /* Collage: en móvil las 3 fotos se reacomodan en mosaico 2×2 (la 1ª ocupa el ancho) */
+    .hero-collage { grid-template-columns: 1fr 1fr; grid-template-rows: 1.1fr 1fr; gap: 3px; }
+    .hero-collage-item--1 { grid-column: 1 / -1; }
     .hero-actions { flex-wrap: wrap; margin-bottom: 60px; }
     .hero-scroll { bottom: 22px; }
 

@@ -1,4 +1,5 @@
 import { flota, comodidades, carrusel } from '../data/flota.js'
+import Icon from '../components/Icon.jsx'
 import useReveal from '../hooks/useReveal.js'
 import useDocumentTitle from '../hooks/useDocumentTitle.js'
 
@@ -54,14 +55,14 @@ export default function Flota() {
             <ul className="amenities-grid">
               {comodidades.map((c, i) => (
                 <li className="reveal-scale" data-delay={100 + i * 50} key={c.texto}>
-                  <span>{c.icono}</span> {c.texto}
+                  <span><Icon name={c.icono} /></span> {c.texto}
                 </li>
               ))}
             </ul>
           </div>
 
           <div className="fleet-showcase reveal-scale" data-delay="200">
-            <img src="/img/flota-completa.jpg" alt="Flota completa de Cottullari S.A. estacionada" loading="lazy" />
+            <img src="/img/flota-completa.jpg" alt="Flota completa de Cottullari S.A. estacionada" loading="lazy" width="1260" height="540" />
             <div className="fleet-showcase-overlay">
               <h3>Flota completa <em>en operación</em></h3>
               <p>Unidades modernas listas para llevarte a cualquier destino del Ecuador y más allá.</p>
@@ -87,7 +88,7 @@ export default function Flota() {
             {/* Duplicamos las slides para lograr el bucle infinito de la animación CSS */}
             {[...carrusel, ...carrusel].map((s, i) => (
               <div className="carousel-slide" key={i}>
-                <img src={s.img} alt={i < carrusel.length ? s.alt : ''} loading="lazy" />
+                <img src={s.img} alt={i < carrusel.length ? s.alt : ''} loading="lazy" width="320" height="320" />
               </div>
             ))}
           </div>

@@ -561,7 +561,7 @@ section { position: relative; }
 .fleet-table th + th { border-left: 1px solid rgba(255,255,255,0.12); }
 .fleet-table td {
     padding: 26px 28px; font-family: var(--body); font-size: 15px; font-weight: 500;
-    border-top: 1px solid var(--line);
+    border-top: 1px solid rgba(46,107,176,0.14);
     vertical-align: middle; color: var(--text-2);
     position: relative;
     transition: background 0.4s ease, color 0.4s ease;
@@ -570,7 +570,9 @@ section { position: relative; }
     transition: all 0.3s ease;
     position: relative;
 }
-.fleet-table tbody tr:nth-child(even) td { background: rgba(46,107,176,0.035); }
+/* Filas alternadas con tinte azul / verde de marca — ya no blanco plano */
+.fleet-table tbody tr:nth-child(odd) td { background: rgba(46,107,176,0.30); }
+.fleet-table tbody tr:nth-child(even) td { background: rgba(43,182,115,0.32); }
 .fleet-table tbody tr td:first-child {
     border-left: 4px solid transparent;
     transition: border-color 0.3s ease;
@@ -581,7 +583,7 @@ section { position: relative; }
 .fleet-table tbody tr:nth-child(4) td:first-child { border-left-color: var(--green); }
 .fleet-table tbody tr:nth-child(5) td:first-child { border-left-color: var(--green-bright); }
 .fleet-table tbody tr:hover td {
-    background: linear-gradient(90deg, rgba(46,107,176,0.10), rgba(43,182,115,0.10));
+    background: linear-gradient(90deg, rgba(46,107,176,0.20), rgba(43,182,115,0.20));
     color: var(--text-1);
 }
 .fleet-table tbody tr:hover td:first-child { border-left-width: 6px; }

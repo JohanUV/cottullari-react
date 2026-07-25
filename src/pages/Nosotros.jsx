@@ -17,7 +17,7 @@ export default function Nosotros() {
           <p className="lead">
             La Compañía de Transporte de Turismo Cottullari S.A. nació el 26 de marzo y fue
             aprobada por la Superintendencia de Compañías el 1 de abril de 2010. Su fundador,
-            el Sr. Javier Díaz, junto a un equipo de socios visionarios cargados de grandes sueños y esperanzas,
+            el Abg. Javier Díaz, junto a un equipo de socios visionarios cargados de grandes sueños y esperanzas,
             inició la actividad económica con 9 unidades.
           </p>
           <p className="lead">

@@ -7,8 +7,9 @@ export default function Footer() {
         <div className="footer-brand">
           <img className="logo-footer" src="/img/logo.png" alt="Cottullari S.A." />
           <p>
-            Compañía de Transporte de Turismo. Líderes en transporte turístico desde 2010,
-            representando a la provincia de Cotopaxi con calidad y seguridad.
+            La Compañía de Transporte de Turismo Cottullari, líderes en transportación turística
+            del Ecuador desde el año 2010, representando a la provincia de Cotopaxi con un servicio
+            nacional e internacional, con calidad y seguridad.
           </p>
         </div>
 

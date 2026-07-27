@@ -32,6 +32,16 @@ export default function Footer() {
             <li>0995 547 096</li>
             <li>cotullari@hotmail.com</li>
           </ul>
+          <a
+            className="footer-24h"
+            href="https://wa.me/593987775286"
+            target="_blank"
+            rel="noopener"
+            aria-label="WhatsApp 098 777 5286, servicio las 24 horas"
+          >
+            <span className="footer-24h-num">098 777 5286</span>
+            <span className="footer-24h-label">Servicio las 24 horas</span>
+          </a>
         </div>
 
         <div className="footer-col">

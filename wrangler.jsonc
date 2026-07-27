@@ -1,0 +1,11 @@
+{
+  // Configuración de despliegue en Cloudflare Workers (sitio estático / SPA).
+  // El nombre debe coincidir exacto con el Worker creado en el dashboard.
+  "name": "cottullari",
+  "compatibility_date": "2026-07-27",
+  "assets": {
+    "directory": "./dist",
+    // Hace que React Router maneje las rutas: al refrescar /flota no da 404.
+    "not_found_handling": "single-page-application"
+  }
+}

@@ -9,8 +9,37 @@ const destinosOpciones = [
   'Otro / Personalizado',
 ]
 
-// Formulario de cotización. Envía los datos por fetch (AJAX) al backend PHP
-// registrar.php, que guarda en MySQL. Vite hace de proxy para evitar CORS.
+const WHATSAPP_NUMERO = '593987775286'
+
+// El <input type="date"> entrega "2026-07-27"; lo pasamos a dd/mm/aaaa.
+const formatearFecha = (iso) => {
+  if (!iso) return ''
+  const [anio, mes, dia] = iso.split('-')
+  return `${dia}/${mes}/${anio}`
+}
+
+// Arma el texto de la solicitud para WhatsApp. Omite los campos opcionales
+// que el usuario dejó vacíos para que el mensaje no quede con huecos.
+const construirMensajeWhatsApp = (datos) => {
+  const lineas = [
+    '*Solicitud de cotización — Cottullari S.A.*',
+    '',
+    `*Nombre:* ${datos.nombre}`,
+    `*Correo:* ${datos.correo}`,
+  ]
+  if (datos.telefono) lineas.push(`*Teléfono:* ${datos.telefono}`)
+  if (datos.destino) lineas.push(`*Destino:* ${datos.destino}`)
+  if (datos.pasajeros) lineas.push(`*Pasajeros:* ${datos.pasajeros}`)
+  if (datos.fecha) lineas.push(`*Fecha tentativa:* ${formatearFecha(datos.fecha)}`)
+  lineas.push('', `*Mensaje:* ${datos.mensaje}`)
+  return lineas.join('\n')
+}
+
+// Formulario de cotización.
+// En desarrollo envía por fetch (AJAX) al backend PHP registrar.php, que
+// guarda en MySQL; Vite hace de proxy para evitar CORS.
+// En producción el sitio es estático en Cloudflare (no hay PHP ni MySQL), así
+// que la solicitud se entrega por WhatsApp con los datos ya redactados.
 export default function CotizarForm({ destinoInicial = '' }) {
   const [enviando, setEnviando] = useState(false)
   const [enviado, setEnviado] = useState(false)
@@ -21,6 +50,17 @@ export default function CotizarForm({ destinoInicial = '' }) {
     const form = e.currentTarget
     setEnviando(true)
     setError('')
+
+    if (import.meta.env.PROD) {
+      const datos = Object.fromEntries(new FormData(form))
+      const texto = encodeURIComponent(construirMensajeWhatsApp(datos))
+      // window.open dentro del handler del submit: el navegador lo cuenta como
+      // acción del usuario y no lo bloquea como popup.
+      window.open(`https://wa.me/${WHATSAPP_NUMERO}?text=${texto}`, '_blank', 'noopener')
+      setEnviado(true)
+      return
+    }
+
     try {
       const respuesta = await fetch('/registrar.php', {
         method: 'POST',
@@ -44,9 +84,16 @@ export default function CotizarForm({ destinoInicial = '' }) {
       <div className="cotizar-form reveal-right is-visible">
         <div className="form-enviado">
           <h3>✓ Formulario enviado</h3>
-          <p>
-            Gracias por su solicitud. Nuestro equipo se pondrá en contacto en menos de 24 horas.
-          </p>
+          {import.meta.env.PROD ? (
+            <p>
+              Abrimos WhatsApp con su solicitud lista para enviar. Si no se abrió
+              solo, escríbanos al <strong>098 777 5286</strong>. Atendemos 24 horas.
+            </p>
+          ) : (
+            <p>
+              Gracias por su solicitud. Nuestro equipo se pondrá en contacto en menos de 24 horas.
+            </p>
+          )}
         </div>
       </div>
     )
